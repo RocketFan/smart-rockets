@@ -8,7 +8,7 @@ Project is a simple game where a player control a rocket, try to hit a red targe
 
 The game was made using SMFL library which provides fast and easy development of c++ 2d games.  
 
-GameObject is a parent class for every object in the game and contains basic information and methods to override. There are also shape classes (like Rectangle or Circle) which extend GameObject, override method responsible for collision check and contain shape information. Thanks to that, it was simple to implement classes like Rocket. Collision system provides methods to check collision in every game object which then are added to a dynamic object list or a static object list (it demand on collision type of an object for optimalization issues) where the game is able to check collision for them per frame.
+GameObject is a parent class for every object in the game and contains basic information and methods to override. There are also shape classes (like Rectangle or Circle) which extend GameObject, override method responsible for collision check and contain shape information. Thanks to that, it was simple to implement classes like Rocket. Collision system provides methods to check collision in every game object which then are added to a dynamic object list or a static object list (it depends on collision type of an object for optimalization issues) where the game is able to check collision for them per frame.
 
 ## AI Part
 
