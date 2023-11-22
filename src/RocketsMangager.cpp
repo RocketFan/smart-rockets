@@ -4,6 +4,7 @@
 #include "../include/GameObjects/GameObjectBuilder.h"
 #include "../include/GameObjects/Rocket.h"
 #include "../include/GameObjects/Target.h"
+#include <chrono>
 
 RocketsManager::RocketsManager(Game *game, Vector2u rocketSize, Vector2f spawnPos) {
     this->game = game;
@@ -27,7 +28,7 @@ RocketsManager::RocketsManager(Game *game, Vector2u rocketSize, Vector2f spawnPo
 
     this->population = std::make_shared<Population>(size, 0.01, rockets.size());
     population->setDNAToRockets(rockets);
-    this->time = std::clock();
+    this->time = std::chrono::high_resolution_clock::now();
 }
 
 void RocketsManager::update(class Target *target) {
@@ -51,7 +52,7 @@ void RocketsManager::updateGeneration() {
     population->generate();
     population->setDNAToRockets(rockets);
 
-    this->time = std::clock();
+    this->time = std::chrono::high_resolution_clock::now();
 }
 
 bool RocketsManager::checkFinished() {
@@ -61,7 +62,9 @@ bool RocketsManager::checkFinished() {
         if(!rocket->stop)
             finished = false;
 
-    if(clock() - time > 12000)
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - time;
+    if (elapsed.count() > 12.0)
         finished = true;
 
     return finished;

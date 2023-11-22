@@ -1,6 +1,7 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <chrono>
 #include <vector>
 
 #include "Helpers/Vector2.h"
@@ -12,7 +13,7 @@ class Game;
 class RocketsManager {
 public:
     Vector2f spawnPos;
-    std::clock_t time;
+    std::chrono::high_resolution_clock::time_point time;
 
     RocketsManager(Game* game, Vector2u rocketSize, Vector2f spawnPos);
 

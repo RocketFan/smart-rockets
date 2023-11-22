@@ -2,6 +2,7 @@
 
 #include <random>
 #include <ctime>
+#include <iostream>
 
 class Random {
 public:
@@ -10,7 +11,7 @@ public:
     }
 
     static float Float() {
-        return (float) s_Distribution(s_RandomEngine) / (float) std::numeric_limits<uint32_t>::max();
+        return std::generate_canonical<float, std::numeric_limits<float>::digits>(s_RandomEngine);
     }
 
     static float RangeFloat(float min, float max) {
